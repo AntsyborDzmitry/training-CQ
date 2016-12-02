@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Carousel"
+    xtype="tabpanel">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <carousel
+            jcr:primaryType="cq:Widget"
+            title="carousel"
+            xtype="panel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <images
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="Click the '+' to add a new image"
+                    fieldLabel="Images"
+                    name="./images"
+                    xtype="multifield">
+                    <fieldConfig
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="composite"
+                        labelWidth="300"
+                        xtype="compositefield">
+                        <items jcr:primaryType="cq:WidgetCollection">
+                            <text
+                                jcr:primaryType="cq:Widget"
+                                fieldLabel="Text"
+                                name="./text"
+                                width="75"
+                                xtype="textfield"/>
+                            <path
+                                jcr:primaryType="cq:Widget"
+                                fieldLabel="Path"
+                                name="./path"
+                                rootPath="/content/dam"
+                                width="75"
+                                xtype="pathfield"/>
+                        </items>
+                    </fieldConfig>
+                </images>
+            </items>
+        </carousel>
+    </items>
+</jcr:root>

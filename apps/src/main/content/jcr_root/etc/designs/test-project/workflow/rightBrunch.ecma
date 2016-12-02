@@ -1,0 +1,12 @@
+//log available crx-quickstart/logs/
+function check(){
+    log.info("------------R  I  G  H  T----------------------");
+
+
+    var action = workflowData.getMetaDataMap().get("side");
+    log.info("action ====>  " +  action);
+    log.info("result ====>  " +  (action.toString() ==="right"));
+    log.info("result ====>  " +  (action == "right"));
+
+   return action =="right";
+}
