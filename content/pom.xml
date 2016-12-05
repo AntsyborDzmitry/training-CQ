@@ -32,8 +32,8 @@
     <!-- ====================================================================== -->
     <artifactId>content</artifactId>
     <packaging>content-package</packaging>
-    <name>training-artifName - UI content</name>
-    <description>UI content package for training-artifName</description>
+    <name>training_CQ - content</name>
+    <description>Content package for training_CQ</description>
 
     <!-- <scm>
         <connection></connection>
@@ -122,8 +122,8 @@
                     <embeddeds>
                         <embedded>
                             <groupId>Training-id</groupId>
-                            <artifactId>training-artId.core</artifactId>
-                            <target>/apps/apps/install</target>
+                            <artifactId>core</artifactId>
+                            <target>/apps/test-project/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>

@@ -2,7 +2,7 @@
 <%@include file="/libs/foundation/global.jsp" %>
 <div class="content">
     >>>>>>>>>
-    Content
+    Content PAY
      <cq:include path="testComponent" resourceType="test-project/components/test-PayComponent"/>
 	>>>>>>>>> 
 

@@ -32,8 +32,8 @@
     <!-- ====================================================================== -->
     <artifactId>tests</artifactId>
     <packaging>bundle</packaging>
-    <name>training-artifName - Integration Tests Bundles</name>
-    <description>Bundles for Integration Tests for training-artifName</description>
+    <name>training_CQ - integration Tests Bundles</name>
+    <description>Bundles for Integration Tests for training_CQ</description>
 
     <!-- <scm>
         <connection></connection>
