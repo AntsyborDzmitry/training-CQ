@@ -28,8 +28,15 @@ import java.util.Map;
 
 @Component(label = "Test workflow - process step for right brunches ", immediate = true, metatype = true)
 @Service(WorkflowProcess.class)
-@Property(name = "process.label", value = "TestWorkflowMultiStepSeRightBrunch")
-public class TestWorkflowMultiStepSeRightBrunch implements WorkflowProcess {
+@Property(name = "process.label", value = "TestWorkflowMultiStepSetRightBrunch")
+public class TestWorkflowMultiStepSetRightBrunch implements WorkflowProcess {
+
+    @Property(label = "first props", description = "test props", value = "")
+    private static final String NODE_PATH_1 = "myProps_1";
+
+    @Property(label = "second props", description = "test props", value = "")
+    private static final String NODE_PATH_2 = "myProps_2";
+
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
 
