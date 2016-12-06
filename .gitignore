@@ -9,7 +9,10 @@
 
 # Maven Files
 target/
-bin/
+#exclude all under bin
+bin/*
+#but  alow under content/test-project/bin
+!content/test-project/bin
 
 # IntelliJ Files
 *.iml
