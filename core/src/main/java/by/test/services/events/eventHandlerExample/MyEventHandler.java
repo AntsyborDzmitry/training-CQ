@@ -4,9 +4,7 @@ package by.test.services.events.eventHandlerExample;
 import by.test.services.helpers.MySharedConstant;
 import by.test.services.helpers.MyUtils;
 import org.apache.felix.scr.annotations.*;
-import org.apache.sling.api.resource.LoginException;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.*;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
@@ -44,6 +42,8 @@ public class MyEventHandler implements EventHandler{
     public void handleEvent(Event event) {
         LOG.info("Handled event for MyEventHandler");
 
+        ModifiableValueMap map;
+
         final Map<String, Object> authInfo = Collections.singletonMap(
                 ResourceResolverFactory.SUBSERVICE,
                 (Object) "Anc.D");
@@ -62,11 +62,17 @@ public class MyEventHandler implements EventHandler{
             resourceResolver = resourceResolverFactory.getServiceResourceResolver(authInfo);
 
             String propName = (String)event.getProperty(MySharedConstant.PROP_NAME);
-            propName += MyUtils.getFormatedCurrentDate();
+
             String propDescription = (String)event.getProperty(MySharedConstant.PROP_DESCR);
             propDescription += MyUtils.getFormatedCurrentDate();
 
-        }catch (LoginException e){
+            Resource resource = resourceResolver.getResource("/content/test-project/bin/testEventType");
+
+            map = resource.adaptTo(ModifiableValueMap.class);
+            map.put(propName, propDescription );
+            resource.getResourceResolver().commit();
+
+        }catch (LoginException | PersistenceException e){
             LOG.error("Could not get service resolver", e);
         } finally {
             // Always close resource resolvers you open
