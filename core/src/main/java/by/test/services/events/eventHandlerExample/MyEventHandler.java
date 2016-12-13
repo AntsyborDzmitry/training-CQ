@@ -52,12 +52,13 @@ public class MyEventHandler implements EventHandler{
         try {
             // Always use service users; never admin resource resolvers for "real" code
             /*
-            * Continuing with pacoolsky's comments adding the steps to create a new "system user" through CRX Explorer tool:
+            * Steps for creating a new "system user" through CRX Explorer tool:
                 Open http://localhost:4502/crx/explorer/index.jsp
                 Login as admin
                 Click User Administration
                 Click Create System User
                 Set the UserId Click green button with tick (cannot see a SAVE button)
+                And after that need to subscribe my user for necessary bundle via "Apache sling Service User Mapper Service Amendment"
             * */
             resourceResolver = resourceResolverFactory.getServiceResourceResolver(authInfo);
 
@@ -68,9 +69,11 @@ public class MyEventHandler implements EventHandler{
 
             Resource resource = resourceResolver.getResource("/content/test-project/bin/testEventType");
 
-            map = resource.adaptTo(ModifiableValueMap.class);
-            map.put(propName, propDescription );
-            resource.getResourceResolver().commit();
+            if (resource!=null) {
+                map = resource.adaptTo(ModifiableValueMap.class);
+                map.put(propName, propDescription);
+                resource.getResourceResolver().commit();
+            }
 
         }catch (LoginException | PersistenceException e){
             LOG.error("Could not get service resolver", e);
