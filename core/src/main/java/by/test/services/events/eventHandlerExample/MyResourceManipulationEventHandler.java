@@ -1,6 +1,5 @@
 package by.test.services.events.eventHandlerExample;
 
-
 import by.test.services.helpers.MyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.*;
@@ -8,35 +7,31 @@ import org.apache.felix.scr.annotations.Properties;
 import org.apache.sling.api.SlingConstants;
 import org.apache.sling.api.resource.*;
 import org.osgi.service.event.Event;
-
 import org.osgi.service.event.EventConstants;
 import org.osgi.service.event.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component(immediate=true)
-@Service
+@Component(label = "Test workflow  - resource changes event listener", immediate=true,metatype = true)
+@Service (EventHandler.class)
 @Properties({
         // choose appropriate topic values
-        @Property(name = EventConstants.EVENT_TOPIC, value = {
-                SlingConstants.TOPIC_RESOURCE_CHANGED/*,SlingConstants.TOPIC_RESOURCE_ADDED, SlingConstants.TOPIC_RESOURCE_REMOVED*/
-        })
-
-
-      /*
-        @Property(label = "Event Topics",
-                value = {SlingConstants.TOPIC_RESOURCE_CHANGED, SlingConstants.TOPIC_RESOURCE_ADDED, SlingConstants.TOPIC_RESOURCE_REMOVED},
-                description = "This handler responds to resource modification event.",
+        @Property(
+                label = "Event Topics",
                 name = EventConstants.EVENT_TOPIC,
-                propertyPrivate = true),
-        @Property(label = "JCR paths to watch for changes.",
-                value = "(|(" + SlingConstants.PROPERTY_PATH + "=" + "/content*)(" + SlingConstants.PROPERTY_PATH + "=" + "/etc*))",
+                description = "This handler responds to resource modification event.",
+                value = { SlingConstants.TOPIC_RESOURCE_CHANGED},
+                propertyPrivate = true
+        ),
+        @Property(
+                label = "JCR paths to watch for changes.",
+                value = "(|(" + SlingConstants.PROPERTY_PATH + "=" + "/content/test-project/bin/testEventType))",
+                //*value = "(|(" + SlingConstants.PROPERTY_PATH + "=" + "/content*)(" + SlingConstants.PROPERTY_PATH + "=" + "/etc*))",*//*
                 description = "Paths expressed in LDAP syntax. Example: (|(path=/content*)(path=/etc*))" + " - Watches for changes under /content or /etc. ",
-                name = EventConstants.EVENT_FILTER)
-     */
+                name = EventConstants.EVENT_FILTER
+        )
 })
 public class MyResourceManipulationEventHandler implements EventHandler{
 
@@ -49,8 +44,8 @@ public class MyResourceManipulationEventHandler implements EventHandler{
                                                                                 put(SlingConstants.PROPERTY_CHANGED_ATTRIBUTES, "changed");
                                                                                 put(SlingConstants.PROPERTY_ADDED_ATTRIBUTES, "added");
                                                                                 put(SlingConstants.PROPERTY_REMOVED_ATTRIBUTES, "removed");
-                                                                            }};;
-    private   Map <String,String> changes = new HashMap<String, String>();
+                                                                            }};
+    private   Map <String,String> changes = new HashMap<>();
 
     @Override
     public void handleEvent(Event event) {
@@ -60,8 +55,7 @@ public class MyResourceManipulationEventHandler implements EventHandler{
         ModifiableValueMap map;
 
         final Map<String, Object> authInfo = Collections.singletonMap(
-                ResourceResolverFactory.SUBSERVICE,
-                (Object) "Anc.D");
+                ResourceResolverFactory.SUBSERVICE, "Anc.D");
 
         ResourceResolver resourceResolver = null;
         Resource resource = null;
@@ -78,7 +72,10 @@ public class MyResourceManipulationEventHandler implements EventHandler{
                     List result = Arrays.stream(propNames).filter(res -> trackedProps.keySet().contains(res)).collect(Collectors.toList());
                     if (result != null && !result.isEmpty()) {
                         StringBuilder description = new StringBuilder();
-                        result.stream().forEach( item -> { description.append(trackedProps.get(item)).append("; ");});
+                        result.parallelStream().forEach( item -> {
+                            String [] changedProps = (String [])event.getProperty((String)item);
+                            description.append(trackedProps.get(item)).append(" - ").append(changedProps[0]).append("; ");
+                        });
                         descriptionProp = description.toString();
                     }
                 }
@@ -110,9 +107,8 @@ public class MyResourceManipulationEventHandler implements EventHandler{
 
     private ResourceResolver getResolver () throws LoginException {
         final Map<String, Object> authInfo = Collections.singletonMap(
-                ResourceResolverFactory.SUBSERVICE,
-                (Object) "Anc.D");
-        ResourceResolver resourceResolver = null;
+                ResourceResolverFactory.SUBSERVICE, "Anc.D");
+        ResourceResolver resourceResolver ;
         resourceResolver = resourceResolverFactory.getServiceResourceResolver(authInfo);
         return resourceResolver;
     }

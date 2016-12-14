@@ -10,7 +10,7 @@ import java.util.Hashtable;
 @Component(immediate=true)
 @Service (Runnable.class)
 @Properties({
-        @Property(name="scheduler.expression" ,value="0 0/1 * * * ?")/*every minute*/,
+        @Property(name="scheduler.expression" ,value="0 0/5 * * * ?")/*every 5 minuts*/,
         @Property(name="scheduler.concurrent",boolValue=false)
 })
 public class MyScheduledEventPublisher implements Runnable{
@@ -20,7 +20,7 @@ public class MyScheduledEventPublisher implements Runnable{
 
 
     private void triggerEvent (String name, String description){
-        final Dictionary<String,Object> properties = new Hashtable();
+        final Dictionary<String,Object> properties = new Hashtable<String, Object>();
 
         properties.put(MySharedConstant.PROP_NAME, name);
         properties.put(MySharedConstant.PROP_DESCR,description);
