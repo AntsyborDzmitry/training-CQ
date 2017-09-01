@@ -9,7 +9,7 @@
 
                     //console.log(name);
                     //console.log(email);
-     }
+     };
     var getAnswer = function (name , email) {
         var URI = "/content/test-project/bin/testResorceType";
         $.get( URI, {'name':name, 'email':email})
@@ -21,7 +21,7 @@
             console.err("failed response to  ", URI);
 
         });
-    }
+    };
     var showAnswer = function (response) {
             var $answer = $('.answer');
             var $responseFirstName = $('.answer .firstName .text').text(response.firstName);
@@ -29,4 +29,4 @@
             var $responseEmail = $('.answer .address .text').text(response.address);
 
             $answer.show();
-        }
+        };

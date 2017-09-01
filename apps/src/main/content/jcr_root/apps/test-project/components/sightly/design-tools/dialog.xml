@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Dialog"
+          xtype="dialog"
+          title="Design Tools">
+    <items
+            jcr:primaryType="cq:Widget"
+            xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                    jcr:primaryType="cq:Panel"
+                    title="Settings">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <headerTitle jcr:primaryType="cq:Widget"
+                                 fieldLabel="Header title"
+                                 itemId="linkTitleItem"
+                                 name="./headerTitle"
+                                 xtype="textfield"/>
+                    <headerLink
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Header URL"
+                            itemId="headerLinkItem"
+                            name="./headerLink"
+                            width="300"
+                            xtype="pathfield"/>
+                    <enableHeader
+                            jcr:primaryType="cq:Widget"
+                            defaultValue="false"
+                            fieldLabel="Show"
+                            fieldDescription="show header in design tools widget"
+                            name="./showHeader"
+                            type="checkbox"
+                            xtype="selection"/>
+                    <links
+                            jcr:primaryType="cq:Widget"
+                            fieldDescription="Click the '+' to add a new link"
+                            fieldLabel="Links"
+                            name="./navigationLinks"
+                            itemId="navigationLinksItem"
+                            orderable="{Boolean}false"
+                            width="auto"
+                            xtype="multicompositefield">
+                        <fieldConfigs jcr:primaryType="cq:WidgetCollection">
+                            <linkTitle
+                                    jcr:primaryType="cq:Widget"
+                                    fieldLabel="Title"
+                                    name="./linkTitle"
+                                    itemId="linkTitleItem"
+                                    width="215"
+                                    xtype="textfield"/>
+                            <link
+                                    jcr:primaryType="cq:Widget"
+                                    fieldLabel="URL"
+                                    itemId="linkItem"
+                                    name="./link"
+                                    width="215"
+                                    xtype="pathfield"/>
+                        </fieldConfigs>
+                    </links>
+                </items>
+            </tab1>
+        </items>
+    </items>
+</jcr:root>

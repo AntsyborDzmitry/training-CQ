@@ -3,7 +3,7 @@
 <div class="content container_16">
     >>>>>>>>>
     Content
-     <cq:include path="testComponent" resourceType="test-project/components/test-component"/>
+     <cq:include path="testComponent" resourceType="test-project/components/jsp/test-component"/>
 	>>>>>>>>> 
     <div class="grid_16 body_container">
        grid_16 body_container123

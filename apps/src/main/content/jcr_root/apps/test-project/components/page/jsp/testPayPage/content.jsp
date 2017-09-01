@@ -3,7 +3,7 @@
 <div class="content">
     >>>>>>>>>
     Content PAY
-     <cq:include path="testComponent" resourceType="test-project/components/test-PayComponent"/>
+     <cq:include path="testComponent" resourceType="test-project/components/jsp/test-PayComponent"/>
 	>>>>>>>>> 
 
     <div class="clear"></div>
