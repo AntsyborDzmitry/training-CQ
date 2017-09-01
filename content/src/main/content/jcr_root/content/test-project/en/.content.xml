@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="cq:Page">
+    <jcr:content
+            cq:designPath="/etc/designs/test-project"
+            cq:template="/apps/test-project/templates/testBasePageHTMLTemplate"
+            jcr:primaryType="cq:PageContent"
+            jcr:title="Test Base Page English"
+            sling:resourceType="test-project/components/page/sightly/testBasePageHTML"/>
+    <test_base_page/>
+    <test_free_page/>
+    <test_pay_page/>
+</jcr:root>

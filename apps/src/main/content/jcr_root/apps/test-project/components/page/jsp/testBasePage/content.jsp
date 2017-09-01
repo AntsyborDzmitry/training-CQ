@@ -6,7 +6,7 @@
      <cq:include path="testComponent" resourceType="test-project/components/test-component"/>
 	>>>>>>>>> 
     <div class="grid_16 body_container">
-       grid_16 body_container
+       grid_16 body_container123
         <cq:include path="par" resourceType="foundation/components/parsys"/>
     </div>
     <div class="clear"></div>

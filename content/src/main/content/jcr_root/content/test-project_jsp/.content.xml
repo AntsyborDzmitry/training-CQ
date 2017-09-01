@@ -4,16 +4,12 @@
     <jcr:content
         cq:allowedTemplates="[/apps/test-project/templates/.*]"
         cq:designPath="/etc/designs/test-project"
-        jcr:description="test content"
-        jcr:primaryType="cq:PageContent"
+        jcr:primaryType="nt:unstructured"
         jcr:title="myTestProject Site"
         sling:redirect="{Boolean}true"
         sling:redirectStatus="{Long}302"
         sling:resourceType="foundation/components/redirect"
-        redirectTarget="/content/test-project/en"
-        sling:vanityOrder="{Long}1000"
-        sling:vanityPath="[/test-home]"
-        />
+        redirectTarget="/content/test-project_jsp/test_base_page"/>
     <bin/>
     <en/>
 </jcr:root>

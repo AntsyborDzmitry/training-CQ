@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/content/test-project"/>
+    <filter root="/content/test-project/">
+        <exclude pattern="/content/test-project/example"/>
+    </filter>
+    <filter root="/content/test-project_jsp/">
+        <exclude pattern="/content/test-project_jsp/example"/>
+    </filter>
     <filter root="/content/dam/content"/>
 </workspaceFilter>
+<!--
+<filter root="/etc/ccc/new-products" mode="resolve"/>
+<filter root="/etc/lmu" mode="merge"/>
+<filter root="/etc/designs/default" mode="update"/>
+<filter root="/content/test-project/example">
+        <exclude pattern="/content/test-project/example/data/(.*?)"/>
+    </filter>
+-->

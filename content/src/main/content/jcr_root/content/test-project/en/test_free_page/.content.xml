@@ -8,5 +8,5 @@
         cq:template="/apps/test-project/templates/testFreePageTemplate"
         jcr:primaryType="cq:PageContent"
         jcr:title="Test Free Page"
-        sling:resourceType="test-project/components/page/testFreePage"/>
+        sling:resourceType="test-project/components/page/sightly/testFreePage"/>
 </jcr:root>
