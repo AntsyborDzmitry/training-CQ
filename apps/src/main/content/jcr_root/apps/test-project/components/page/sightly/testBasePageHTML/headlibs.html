@@ -1,10 +1,13 @@
 <!--/* This declares a “clientlibs” object, which is implemented as a template. It's provide possibility to call clienlibraries by categories*/-->
-<sly data-sly-use.clientLibs="${'/libs/granite/sightly/templates/clientlib.html'}" data-sly-unwrap/>
+<sly data-sly-use.clientLibs="${'/libs/granite/sightly/templates/clientlib.html'}"/>
 
 <!--/* Initializes the Experience Manager authoring UI */-->
-<sly data-sly-include="/libs/wcm/core/components/init/init.jsp" data-sly-unwrap/>
+<sly data-sly-include="/libs/wcm/core/components/init/init.jsp"/>
 
-<sly data-sly-call="${clientLibs.all @ categories='my.test.component.wrapper'}" data-sly-unwrap/>
+<sly data-sly-call="${clientLibs.all @ categories='my.test.component.wrapper'}"/>
+
+<sly data-sly-test="${wcmmode.edit}" data-sly-call="${clientLibs.all @ categories='my.test.author'}"/>
+
 
 <!--
     /*<sly data-sly-call="${clientLibs.css @ categories='bower,st-site'}"/>

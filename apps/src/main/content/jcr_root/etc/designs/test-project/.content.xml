@@ -18,6 +18,14 @@
                 <section jcr:primaryType="nt:unstructured"/>
             </par>
         </examplepage>
+        <testBasePageHTML jcr:primaryType="nt:unstructured">
+            <par
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="foundation/components/parsys"
+                    components="[group:Test component]">
+                <section jcr:primaryType="nt:unstructured"/>
+            </par>
+        </testBasePageHTML>
     </jcr:content>
     <clientlibs_test_component_wrapper/>
     <clientlibs_common/>
